@@ -16,21 +16,21 @@ function submitHandler() {
 
 function calculateProfitAndLoss(initial, quantity, current) {
   if (initial > current) {
-    var loss = Math.abs((initial - current) * quantity);
-    var lossPercentage = Math.abs(((loss / initial) * 100);
+    var loss = (initial - current) * quantity;
+    var lossPercentage = Math.trunc(Math.abs(loss / initial) * 100);
 
     showOutput(
-      `You suffered a loss of ${loss} and by ${lossPercentage}%`
+      `Your loss is ${loss} and ${lossPercentage}%`
     );
   } else if (current > initial) {
-    var profit = Math.abs((current - initial) * quantity);
-    var profitPercentage = Math.abs((profit / initial) * 100);
+    var profit = (current - initial) * quantity;
+    var profitPercentage = Math.trunc(Math.abs(profit / initial) * 100);
 
     showOutput(
-      `You gained a profit of ${profit} and by ${profitPercentage}%`
+      `Your gained a profit of ${profit} and ${profitPercentage}%`
     );
-  } else {
-    showOutput(`No Gain, No Loss`);
+  } else if (initial === current) {
+    showOutput(`No Profit, No Loss`);
   }
 }
 
